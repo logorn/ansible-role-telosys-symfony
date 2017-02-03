@@ -1,0 +1,8 @@
+---
+# Install telosys source  with these vars.
+telosys_install_from_source: true
+telosys_git_force: yes
+telosys_source_version: "master"
+telosys_source_clone_dir: "/data/devstack/src/project"
+telosys_local_action_dest: "src/project"
+telosys_project_github_repository: "/logorn/telosys.git"

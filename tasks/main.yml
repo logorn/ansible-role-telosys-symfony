@@ -1,0 +1,25 @@
+---
+# Install telosys dependencies
+
+- name: Clone telosys for php
+  local_action:
+    git
+      repo="{{repositories_base_path}}{{ telosys_project_github_repository }}"
+      dest={{ telosys_local_action_dest }}
+      force={{ telosys_git_force }}
+      version={{ telosys_source_version }}
+      accept_hostkey=yes
+  sudo: no
+  when: telosys_install_from_source == true
+  ignore_errors: yes
+  tags: telosys-php
+
+- name: Install composer dependencies
+  composer:
+    working_dir={{ telosys_source_clone_dir }}
+    no_dev=no
+    prefer_dist=yes
+  sudo: no
+  when: telosys_install_from_source == true
+  ignore_errors: yes
+  tags: telosys-php
